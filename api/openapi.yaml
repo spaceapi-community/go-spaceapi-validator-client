@@ -1,0 +1,192 @@
+openapi: 3.0.2
+info:
+  description: This is the SpaceApi Validator api
+  title: SpaceApi Validator
+  version: 0.0.1
+servers:
+- description: The SpaceApi Validator Service
+  url: https://validator.spaceapi.io
+paths:
+  /v1:
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerInformation'
+          description: get default information about the server
+      tags:
+      - v1
+  /v1/validate/:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateV1'
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateV1Response'
+          description: successful operation
+        400:
+          description: request body is malformed
+        500:
+          description: something went wrong
+      summary: validate an input against the SpaceApi schema
+      tags:
+      - v1
+  /v2:
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerInformation'
+          description: get default information about the server
+      tags:
+      - v2
+  /v2/validateURL:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateUrlV2'
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateUrlV2Response'
+          description: successful operation
+        400:
+          description: request body is malformed
+        500:
+          description: something went wrong
+      summary: validate an input against the SpaceApi schema
+      tags:
+      - v2
+  /v2/validateJSON:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateJsonV2'
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateJsonV2Response'
+          description: successful operation
+        400:
+          description: request body is malformed
+        500:
+          description: something went wrong
+      summary: validate an input against the SpaceApi schema
+      tags:
+      - v2
+components:
+  schemas:
+    ServerInformation:
+      example:
+        usage: usage
+        description: description
+        version: version
+      properties:
+        description:
+          type: string
+        usage:
+          type: string
+        version:
+          type: string
+      required:
+      - description
+      - usage
+      - version
+    ValidateV1:
+      example:
+        data: '{}'
+      properties:
+        data:
+          type: object
+      required:
+      - data
+    ValidateUrlV2:
+      example:
+        url: url
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    ValidateJsonV2:
+      type: object
+    ValidateV1Response:
+      example:
+        valid: true
+        message: message
+      properties:
+        valid:
+          type: boolean
+        message:
+          type: string
+      required:
+      - message
+      - valid
+    ValidateUrlV2Response:
+      example:
+        valid: true
+        cors: true
+        certValid: true
+        isHttps: true
+        message: message
+        httpsForward: true
+        contentType: true
+        reachable: true
+      properties:
+        valid:
+          type: boolean
+        message:
+          type: string
+        isHttps:
+          type: boolean
+        httpsForward:
+          type: boolean
+        reachable:
+          type: boolean
+        cors:
+          type: boolean
+        contentType:
+          type: boolean
+        certValid:
+          type: boolean
+      required:
+      - certValid
+      - contentType
+      - cors
+      - httpsForward
+      - isHttps
+      - reachable
+      - valid
+    ValidateJsonV2Response:
+      example:
+        valid: true
+        message: message
+      properties:
+        valid:
+          type: boolean
+        message:
+          type: string
+      required:
+      - message
+      - valid
