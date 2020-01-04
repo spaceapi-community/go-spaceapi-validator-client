@@ -9,9 +9,8 @@
 
 package spaceapivalidatorclient
 
-// ServerInformation struct for ServerInformation
-type ServerInformation struct {
-	Description string `json:"description"`
-	Usage       string `json:"usage"`
-	Version     string `json:"version"`
+// SchemaError struct for SchemaError
+type SchemaError struct {
+	Field   string `json:"field"`
+	Message string `json:"message"`
 }

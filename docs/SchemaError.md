@@ -1,13 +1,11 @@
-# ValidateJsonV2Response
+# SchemaError
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Valid** | **bool** |  | 
+**Field** | **string** |  | 
 **Message** | **string** |  | 
-**ValidatedJson** | [**map[string]interface{}**](.md) |  | [optional] 
-**SchemaErrors** | [**[]SchemaError**](SchemaError.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
