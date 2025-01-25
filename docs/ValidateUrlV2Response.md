@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Cors** | **bool** |  | 
 **ContentType** | **bool** |  | 
 **CertValid** | **bool** |  | 
+**CheckedVersions** | **[]string** |  | [optional] 
 **ValidatedJson** | [**map[string]interface{}**](.md) |  | [optional] 
 **SchemaErrors** | [**[]SchemaError**](SchemaError.md) |  | [optional] 
 

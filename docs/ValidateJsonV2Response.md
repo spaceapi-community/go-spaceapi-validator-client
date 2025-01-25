@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Valid** | **bool** |  | 
 **Message** | **string** |  | 
+**CheckedVersions** | **[]string** |  | [optional] 
 **ValidatedJson** | [**map[string]interface{}**](.md) |  | [optional] 
 **SchemaErrors** | [**[]SchemaError**](SchemaError.md) |  | [optional] 
 

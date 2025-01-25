@@ -2,13 +2,14 @@ openapi: 3.0.2
 info:
   description: This is the SpaceApi Validator api
   title: SpaceApi Validator
-  version: 1.1.0
+  version: 1.2.0
 servers:
 - description: The SpaceApi Validator Service
   url: https://validator.spaceapi.io
 paths:
   /v1:
     get:
+      deprecated: true
       responses:
         200:
           content:
@@ -20,6 +21,7 @@ paths:
       - v1
   /v1/validate/:
     post:
+      deprecated: true
       requestBody:
         content:
           application/json:
@@ -160,6 +162,9 @@ components:
         httpsForward: true
         contentType: true
         reachable: true
+        checkedVersions:
+        - checkedVersions
+        - checkedVersions
       properties:
         valid:
           type: boolean
@@ -177,6 +182,10 @@ components:
           type: boolean
         certValid:
           type: boolean
+        checkedVersions:
+          items:
+            type: string
+          type: array
         validatedJson:
           type: object
         schemaErrors:
@@ -201,11 +210,18 @@ components:
           message: message
         validatedJson: '{}'
         message: message
+        checkedVersions:
+        - checkedVersions
+        - checkedVersions
       properties:
         valid:
           type: boolean
         message:
           type: string
+        checkedVersions:
+          items:
+            type: string
+          type: array
         validatedJson:
           type: object
         schemaErrors:
